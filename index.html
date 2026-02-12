@@ -1,0 +1,667 @@
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>ثانوية الشهيد رمضاني محمد - قرومة</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;800&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">  <script src="https://www.google.com/recaptcha/api.js" async defer></script>  
+
+<style>  
+    :root {  
+        --primary: #1a5276;  
+        --accent: #2ecc71;  
+        --light: #ecf0f1;  
+        --dark: #2c3e50;  
+    }  
+
+    body {  
+        margin: 0;  
+        font-family: 'Tajawal', sans-serif;  
+        background-color: #f0f3f5;  
+        color: var(--dark);  
+    }  
+
+    header {  
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1541339907198-e08756defeec?auto=format&fit=crop&w=1000&q=80');  
+        background-size: cover;  
+        background-position: center;  
+        color:white;  
+        padding: 60px 20px;  
+        text-align: center;  
+    }  
+
+    nav {  
+        background: white;  
+        position: sticky;  
+        top: 0;  
+        display: flex;  
+        justify-content: center;  
+        padding: 15px;  
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);  
+        z-index: 1000;  
+    }  
+
+    nav button {  
+        background: none;  
+        border: none;  
+        padding: 10px 25px;  
+        margin: 0 5px;  
+        font-family: 'Tajawal';  
+        font-size: 17px;  
+        font-weight: 700;  
+        cursor: pointer;  
+        color: var(--primary);  
+        border-radius: 30px;  
+        transition: 0.3s;  
+    }  
+
+    nav button:hover, nav button.active {  
+        background: var(--primary);  
+        color: yellow;  
+    }  
+
+    .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }  
+    .section { display: none; animation: slideUp 0.5s ease; }  
+    .section.active { display: block; }  
+
+    @keyframes slideUp {  
+        from { opacity: 0; transform: translateY(30px); }  
+        to { opacity: 1; transform: translateY(0); }  
+    }  
+
+    .card {  
+        background: white;  
+        padding: 30px;  
+        border-radius: 20px;  
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);  
+        margin-bottom: 25px;  
+    }  
+
+    .welcome-banner {  
+        background: linear-gradient(135deg, #43cea2, #185a9d);  
+        color: white;  
+        text-align: center;  
+        padding: 25px 15px;  
+        border-radius: 20px;  
+        margin-bottom: 20px;  
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);  
+        animation: zoom 0.8s ease;  
+    }  
+        .welcome-banne {  
+        background: linear-gradient(135deg, #43ce );  
+        color: white;  
+        text-align: center;  
+        padding: 25px 15px;  
+        border-radius: 20px;  
+        margin-bottom: 20px;  
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);  
+        animation: zoom 0.8s ease;  
+    }  
+
+    .dev-card { text-align: center; padding: 40px 20px; }  
+    .dev-img-container {  
+        width: 160px; height: 160px; margin: 0 auto 20px;  
+        border-radius: 50%; padding: 5px;  
+        background: linear-gradient(45deg, var(--primary), var(--accent));  
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);  
+    }  
+    .dev-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid white; }  
+    .dev-name { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }  
+    .dev-bio { font-size: 16px; font-weight: 300; line-height: 1.7; color: #555; max-width: 600px; margin: 0 auto 25px; }  
+
+    .social-apps { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }  
+    .app-icon { text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }  
+    .app-icon:hover { transform: translateY(-5px); }  
+    .app-icon i { font-size: 40px; margin-bottom: 8px; }  
+    .fa-instagram { color: #E1306C; }  
+    .fa-envelope { color: #EA4335; }  
+    .app-label { font-size: 12px; font-weight: bold; }  
+
+    .school-main-img { width: 100%; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }  
+
+    .announcement {  
+        background: white; border-radius: 15px; overflow: hidden;  
+        margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);  
+        border-right: 8px solid var(--primary);  
+    }  
+    .announcement img { width: 100%; max-height: 400px; object-fit: cover; display: block; }  
+    .announcement-content { padding: 20px; }  
+    .announcement h3 { color: var(--primary); margin: 0 0 10px 0; }  
+    .meta { color: #888; font-size: 13px; margin-top: 10px; }  
+
+    .input-group { margin-bottom: 15px; }  
+    label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--primary); }  
+    input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Tajawal'; box-sizing: border-box; }  
+      
+    .btn-add {  
+        background: var(--accent); color: white; border: none; padding: 15px;  
+        border-radius: 10px; cursor: pointer; width: 100%; font-weight: 700; font-size: 16px;  
+    }  
+    .btn-add:disabled { background: #ccc; cursor: not-allowed; }  
+
+    footer { text-align: center; padding: 30px; background: var(--dark); color: white; margin-top: 50px; }  
+      
+    /* Captcha Center */  
+    .captcha-container { display: flex; justify-content: center; margin: 15px 0; }  
+
+    @media (max-width: 768px) {  
+        header { padding: 40px 15px; font-size: 90%; }  
+        nav button { padding: 8px 15px; font-size: 15px; }  
+    }  
+</style>
+
+</head>  
+<body>  <header>  
+    <h1>ثانوية الشهيد رمضاني محمد</h1>  
+    <p>قرومة - ولاية البويرة | العلم أساس النهضة</p>  
+</header>  <nav>  
+    <button onclick="showSection('home')" class="active">الرئيسية</button>  
+    <button onclick="showSection('about')">عن المؤسسة</button>  
+    <button onclick="showSection('news')">لوحة الإعلانات</button>  
+    <button onclick="showSection('auth')">حسابي</button>  
+    <button onclick="showSection('dev')">المطور</button> 
+    <button onclick="showSection('law')">سياسة الخصوصية </button>
+</nav>  <div class="container">  <div id="home" class="section active">  
+    <div class="card">  
+           <h1>🏛️ الصفحة الرئيسية </h1>
+       <div class="welcome-banner">  
+          <h2>Welcome 👋</h2>  
+       </div>  
+        <img src="Combany/1770444189726.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية'">  
+        <h2>مرحباً بكم في الموقع الرسمي</h2>  
+        <p>هنا تجدون آخر الأخبار والإعلانات والدروس الخاصة بتلاميذ ثانوية الشهيد رمضاني محمد ببلدية قرومة.</p> 
+         <div>
+         <h1></h1>
+                     <div class="welcome-banne">
+                <h2> السنة الدراسية   :</h2>
+                <h2>2026/2025</h2>
+                     </div>
+               <h2> صلي على رسول الله ﷺ</h2>
+         
+        <div style="background: #e8f4fd; padding: 15px; border-radius: 10px; border-right: 5px solid var(--primary);">  
+            <strong>رسالتنا:</strong> نسعى لتكوين جيل متعلم ومتميز علمياً وأخلاقياً يساهم في بناء مستقبل الوطن.  
+       </div>
+       </div>  
+      </div>  
+</div>  
+
+<div id="about" class="section">  
+    <div class="card">  
+    <h1> 🎓معلومات عن الثانوية</h1>
+       <img src="Combany/1770444189726.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية'"> 
+        <h2>📜 نبذة عن ثانويتنا</h2>  
+        <p>سميت الثانوية باسم الشهيد البطل <strong>رمضاني محمد</strong>، تخليداً لذكراه.</p>  
+        <h3>📍 الموقع والبيئة</h3>  
+        <p>تمتاز المنطقة بطبيعة جبلية خلابة تساعد التلاميذ على التركيز.</p>  
+        <h3>🏢 التجهيزات والمرافق</h3>  
+        <ul>  
+            <li>قاعات دراسية مجهزة.</li>  
+            <li>مخابر حديثة.</li>  
+            <li>مطعم مدرسي.</li>  
+            <li>ساحات واسعة</li>  
+            <li>قاعة رياضية</li>  
+            <li>مدرج كبير</li>  
+        </ul> 
+        <img src="Cv/1770444305396.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية'"> 
+        <img src="Cv/1770444321856.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية'"> 
+        <img src="Cv/1770444318170.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية
+        ">
+        <img src="Cv/1770444348466.jpg" alt="ثانوية رمضاني محمد" class="school-main-img" onerror="this.src='https://via.placeholder.com/800x400?text=صورة+الثانوية
+">
+        <h3>🎓 الأداء التربوي والنشاطات</h3>  
+        <p>تسعى الثانوية لتحقيق نتائج متميزة في شهادة البكالوريا، كما تنظم نشاطات دورية تشمل إحياء المناسبات الوطنية والدينية وتكريم المتفوقين.</p>  
+    </div>  
+</div>  
+
+<div id="news" class="section">  
+    <div class="card">  
+        <h3>📢 إضافة إعلان جديد</h3>  
+        <div id="news-lock-msg"></div>  
+        <div class="input-group">  
+            <input type="text" id="pTitle" placeholder="عنوان الإعلان...">  
+        </div>  
+        <div class="input-group">  
+            <textarea id="pContent" rows="3" placeholder="تفاصيل الإعلان..."></textarea>  
+        </div>  
+        <div class="input-group">  
+            <label>📸 اختر صورة:</label>  
+            <input type="file" id="pImgFile" accept="image/*">  
+        </div>  
+
+        <div class="captcha-container">  
+            <div class="g-recaptcha" data-sitekey="6LcxnWMsAAAAAHS4AfWiUjlAcIUH44GYAVvTLPBr"></div>  
+        </div>  
+
+        <button class="btn-add" id="uploadBtn" onclick="publish()" disabled>نشر الإعلان الآن</button>  
+        <p id="status" style="font-size: 12px; color: var(--primary); margin-top: 10px; text-align: center;"></p>  
+    </div>  
+    <div id="feed"></div>  
+</div>  
+
+<div id="auth" class="section">  
+    <div class="card" id="auth-form">  
+        <h2 id="auth-title">إنشاء حساب للناشرين</h2>  
+        <div class="input-group" id="nameField">  
+            <input type="text" id="userName" placeholder="الاسم الكامل">  
+        </div>  
+        <div class="input-group">  
+            <input type="email" id="userEmail" placeholder="البريد الإلكتروني">  
+        </div>  
+        <div class="input-group">  
+            <input type="password" id="userPass" placeholder="كلمة المرور">  
+        </div>  
+        <button class="btn-add" onclick="handleAuth()" id="authBtn">إنشاء حساب</button>  
+        <p style="text-align: center; margin-top: 15px;">  
+            <a href="javascript:void(0)" onclick="toggleAuthMode()" id="toggleLink">لديك حساب؟ سجل دخولك</a>  
+        </p>  
+    </div>  
+
+    <div class="card" id="user-profile" style="display: none; text-align: center;">  
+        <i class="fas fa-user-circle" style="font-size: 60px; color: var(--primary); margin-bottom: 15px;"></i>  
+        <h3 id="display-user-name">مرحباً</h3>  
+        <p id="display-user-email"></p>  
+        <button class="btn-add" style="background: #e74c3c; margin-top: 20px;" onclick="logout()">تسجيل الخروج</button>  
+    </div>  
+</div>  
+
+<div id="dev" class="section">  
+    <div class="card dev-card">  
+        <div class="dev-img-container">  
+            <img src="cv/1770455808503.png" alt="فؤاد قبلاجي" class="dev-img">  
+        </div>  
+        <div class="dev-name">𝐹𝑜𝑢𝑎𝑑 𝑘𝑒𝑏𝑙𝑎𝑑𝑗𝑖 | فےـؤاد قبلاجي</div>  
+        <p class="dev-bio">‏
+‏                أنا فؤاد قبلاجي  |  Fouad kebladji، مطور مبتدئ أقوم بإنشاء تطبيقات ومواقع ويب  هادفة . أعمل دائماً بدقة واحترافية لضمان تجربة مستخدم موثوقة
+.</p>
+           <div class="dev-name"> 
+            <h2> للتواصل معي :</h2>
+           </div>
+        <div class="social-apps">  
+        
+            <a href="https://www.instagram.com/_kebladji_?igsh=MWRwcnM0bXdtd2J0MA==" target="_blank" class="app-icon">  
+                <i class="fab fa-instagram"></i>  
+                <span class="app-label">Instagram</span>  
+            </a>  
+            <a href="mailto:Kebladjifouad@gmail.com" class="app-icon">  
+                <i class="fas fa-envelope"></i>  
+                <span class="app-label">Email</span>  
+            </a>  
+        </div>  
+    </div>  
+</div>
+<div id="law" class="section">
+   <div>
+     <h2> سياسة الخصوصية – الموقع الرسمي لثانوية الشهيد رمضاني محمد بقرومة</h2>
+     <h4> باستخدامك للموقع فإنك توافق على بنود سياسة الخصوصية التالية :</h4>
+     <p> نحن في ثانوية الشهيد رمضاني محمد نحترم خصوصية زوار موقعنا ونلتزم بحماية بياناتهم الشخصية. توضح هذه السياسة كيفية جمع المعلومات واستخدامها وتأمينها عند استخدام الموقع وهي :</p>
+     <h3> 1/ المعلومات التي نقوم بجمعها</h3>
+     <p> قد نقوم بجمع المعلومات التالية عند التسجيل أو التفاعل مع الخدمات:</p>
+       <lu>
+         <li>  اسم المستخدم (اسم الكامل)</li>
+         <li>  البريد الإلكتروني</li>
+         <li>  المحتوى الذي ينشره المستخدم من إعلانات أو تعليقات</li>
+         <li>  بيانات تقنية عامة مثل نوع الجهاز والمتصفح لأغراض تحسين الأداء</li>
+       </lu>
+       <p> جمع المعلومات لايعني حفظها فهي تعالج بطريقة آلية </p>
+     <h3> 2/ كيفية استخدام المعلومات</h3>
+      <p> تسخدم البيانات ضمن النطاق القانوني في : </p>
+       <lu>
+         <li>  إنشاء وإدارة حساب المستخدم</li>
+         <li>  تمكين نشر الإعلانات والتعليقات والتفاعلات</li>
+         <li>  تحسين تجربة الاستخدام وتطوير خدمات الموقع</li>
+         <li>  حماية الموقع من الاستخدام غير المشروع</li>
+       </lu>
+     <h3> 3/ حماية البيانات</h3>
+     <p> نستخدم خدمات موثوقة من طرف ثالث مثل Firebase وGoogle reCAPTCHA للمساعدة في:</p>
+       <lu>
+         <li>   تأمين تسجيل الدخول والمعلومات </li>
+         <li>  منع الروبوتات والرسائل المزعجة والإختراقات المحتملة </li>
+         <li>  حفظ البيانات بشكل آمن</li>
+         <li>  حظر التعليقات والمنشوات غير اللائقة </li>
+       </lu>
+     <h3> 4/مشاركة المعلومات</h3>
+     <p> من المهم جدا اعلامكم بأننا:</p>
+       <lu>
+         <li>  لا نقوم ببيع أو تأجير البيانات الشخصية لأي طرف ولا نقوم بحفظ وهي مشفرة. </li>
+         <li> قد تتم المعالجة عبر مزودي الخدمة التقنيين المرتبطين بتشغيل الموقع فقط(اي تتم ادارتها آليا) </li>
+       </lu>
+     <h3> 5/ محتوى المستخدم</h3>
+     <p> المستخدم مسؤول عن أي نصوص أو صور أو تعليقات يقوم بنشرها، ويجب أن تكون لائقة وتحترم القوانين والقيم التربوية ويترتب عن صدور شيء مخالفة عقوبات تصل لحظر نهائيا </p>
+     <h3>6/ ملفات تعريف الارتباط (Cookies)</h3>
+     <p> قد تُستخدم تقنيات بسيطة لحفظ حالة تسجيل الدخول وتحسين الأداء.</p>
+     <h3> 7/ حقوق المستخدم</h3>
+      <p>يحق للمستخدم التعليق والنشر في حال انشاء حساب كما يمكن للمستخدم تعديل بياناته وتعليقاته او تعديلها عبر التواصل مع ادارة الموقع الموجودة في قسم "المطور " 
+‏       </p>
+     <h3> 8/ التعديلات على السياسة</h3> 
+       <p> يحق لإدارة الموقع تحديث سياسة الخصوصية عند الحاجة، ويعتبر استمرار استخدام الموقع موافقة على أي تحديث</p>
+     <h3> 9/ التواصل معنا</h3>
+       <p> لأي استفسار متعلق بالخصوصية، يمكن التواصل مع إدارة الموقع .</p>
+      <h3> 10/الملكية الفكرية </h3>
+      <p> تم انشاء الموقع بواسطة fouad .k وكل حقوق الطبع والنشر محفوظة لديه 
+‏     © ثانوية الشهيد رمضاني محمد – قرومة  </p>
+   </div>
+</div>
+<div> <footer>  
+    <p>© 2026 ثانوية الشهيد رمضاني محمد - بلدية قرومة</p>  
+    <p>برمجة وتطوير: <b>فؤاد قبلاجي</b></p>  
+</footer>  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>  <script>  
+    const firebaseConfig = {  
+      apiKey: "AIzaSyC2pCToSUJS4jUdoaDWcUFbtZ2SwTE7NCE",  
+      authDomain: "schoolwebsite-30deb.firebaseapp.com",  
+      databaseURL: "https://schoolwebsite-30deb-default-rtdb.firebaseio.com",  
+      projectId: "schoolwebsite-30deb",  
+      storageBucket: "schoolwebsite-30deb.appspot.com",   
+      messagingSenderId: "750788221406",  
+      appId: "1:750788221406:web:b74f1302701f8937dae54f"  
+    };  
+  
+    firebase.initializeApp(firebaseConfig);  
+    const db = firebase.database();  
+    const storage = firebase.storage();  
+    const auth = firebase.auth();  
+  
+    let isSignUp = true;  
+  
+    function showSection(id) {  
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));  
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));  
+        document.getElementById(id).classList.add('active');  
+        // نستخدم طريقة بديلة لتحديد الزر النشط لضمان التوافق  
+        const navButtons = document.querySelectorAll('nav button');  
+        navButtons.forEach(btn => {  
+            if(btn.getAttribute('onclick').includes(id)) btn.classList.add('active');  
+        });  
+    }  
+  
+    function toggleAuthMode() {  
+        isSignUp = !isSignUp;  
+        document.getElementById('auth-title').innerText = isSignUp ? "إنشاء حساب للناشرين" : "تسجيل الدخول";  
+        document.getElementById('nameField').style.display = isSignUp ? "block" : "none";  
+        document.getElementById('authBtn').innerText = isSignUp ? "إنشاء حساب" : "دخول";  
+        document.getElementById('toggleLink').innerText = isSignUp ? "لديك حساب؟ سجل دخولك" : "جديد؟ أنشئ حساباً";  
+    }  
+  
+    async function handleAuth() {  
+        const email = document.getElementById('userEmail').value;  
+        const pass = document.getElementById('userPass').value;  
+        const name = document.getElementById('userName').value;  
+        if(!email || !pass) { alert("أدخل البيانات كاملة"); return; }  
+  
+        try {  
+            if (isSignUp) {  
+                const res = await auth.createUserWithEmailAndPassword(email, pass);  
+                await res.user.updateProfile({ displayName: name });  
+                alert("مرحباً بك في أسرة الناشرين!");  
+            } else {  
+                await auth.signInWithEmailAndPassword(email, pass);  
+            }  
+            showSection('home');  
+        } catch (e) { alert("خطأ: " + e.message); }  
+    }  
+  
+    auth.onAuthStateChanged(user => {  
+        const uploadBtn = document.getElementById('uploadBtn');  
+        const lockMsg = document.getElementById('news-lock-msg');  
+        if (user) {  
+            document.getElementById('auth-form').style.display = "none";  
+            document.getElementById('user-profile').style.display = "block";  
+            document.getElementById('display-user-name').innerText = "مرحباً: " + user.displayName;  
+            document.getElementById('display-user-email').innerText = user.email;  
+            uploadBtn.disabled = false;  
+            lockMsg.innerHTML = "";  
+        } else {  
+            document.getElementById('auth-form').style.display = "block";  
+            document.getElementById('user-profile').style.display = "none";  
+            uploadBtn.disabled = true;  
+            lockMsg.innerHTML = "<div style='color:red; text-align:center; margin-bottom:10px;'>⚠️ يجب تسجيل الدخول للنشر</div>";  
+        }  
+    });  
+  
+    function logout() { auth.signOut(); }  
+  
+    async function publish() {  
+        const user = auth.currentUser;  
+        if(!user) { alert("يجب تسجيل الدخول أولاً"); return; }  
+  
+        const title = document.getElementById('pTitle').value;  
+        const text = document.getElementById('pContent').value;  
+        const file = document.getElementById('pImgFile').files[0];  
+        const btn = document.getElementById('uploadBtn');  
+        const status = document.getElementById('status');  
+  
+        const captchaResponse = grecaptcha.getResponse();  
+        if (captchaResponse.length == 0) { alert("يرجى إكمال التحقق البشري"); return; }  
+  
+        if(!title || !text) { alert("أدخل العنوان والمحتوى"); return; }  
+  
+        btn.disabled = true;  
+        status.innerText = "جاري النشر...";  
+  
+        let imageUrl = null;  
+        if(file) {  
+            try {  
+                const storageRef = storage.ref('news_images/' + Date.now() + "_" + file.name);  
+                await storageRef.put(file);  
+                imageUrl = await storageRef.getDownloadURL();  
+            } catch(e) { console.error(e); }  
+        }  
+  
+        db.ref("posts").push({  
+            title: title,  
+            text: text,  
+            img: imageUrl,  
+            publisher: user.displayName,  
+            date: new Date().toLocaleString('ar-EG')  
+        }).then(() => {  
+            status.innerText = "تم النشر بنجاح!";  
+            btn.disabled = false;  
+            grecaptcha.reset();  
+            document.getElementById('pTitle').value = "";  
+            document.getElementById('pContent').value = "";  
+            document.getElementById('pImgFile').value = "";  
+        });  
+    }  
+  
+    db.ref("posts").on("child_added", (snap) => {  
+        const p = snap.val();  
+        let imgHtml = p.img ? `<img src="${p.img}">` : '';  
+        const html = `  
+            <div class="announcement">  
+                ${imgHtml}  
+                <div class="announcement-content">  
+                    <h3>${p.title}</h3>  
+                    <p>${p.text}</p>  
+                    <div class="meta">🕒 ${p.date} | ✍️ الناشر: ${p.publisher || 'إدارة الثانوية'}</div>  
+                </div>  
+            </div>  
+        `;  
+        document.getElementById('feed').insertAdjacentHTML('afterbegin', html);  
+    });  
+</script>  </body>  
+</html>  <style>  
+.reactions{margin-top:15px;border-top:1px solid #eee;padding-top:10px}  
+.like-btn{background:#fff;border:1px solid #ddd;padding:6px 12px;border-radius:20px;cursor:pointer;font-family:'Tajawal'}  
+.like-btn.liked{background:#e74c3c;color:#fff;border-color:#e74c3c}  
+.comment-box{margin-top:10px}  
+.comment{background:#f7f7f7;padding:8px 10px;border-radius:8px;margin-top:5px;font-size:13px}  
+.comment small{color:#777}  
+.admin-tools{margin-top:10px;text-align:left}  
+.pin{border:2px solid gold}  
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#2c3e50;color:#fff;padding:12px 18px;border-radius:10px;z-index:9999;opacity:0;transition:.3s}  
+.toast.show{opacity:1}  
+</style>  <div id="toast" class="toast"></div>  <script>  
+const ADMIN_PASSWORD="fouad2009prosuper"; // غيرها  
+  
+function showToast(msg){  
+ const t=document.getElementById("toast");  
+ t.innerText=msg;  
+ t.classList.add("show");  
+ setTimeout(()=>t.classList.remove("show"),2500);  
+}  
+  
+/* منع التسجيل الخاطئ */  
+const oldHandleAuth=handleAuth;  
+handleAuth=async function(){  
+ const pass=document.getElementById('userPass').value;  
+ const name=document.getElementById('userName').value;  
+ if(isSignUp && !name){showToast("الرجاء إدخال الاسم الكامل");return;}  
+ if(pass.length<6){showToast("كلمة المرور يجب أن تكون 6 على الأقل");return;}  
+ oldHandleAuth();  
+}  
+  
+/* تعديل عرض المنشورات لإضافة التفاعلات */  
+db.ref("posts").off("child_added");  
+db.ref("posts").on("child_added",(snap)=>{  
+ const p=snap.val();  
+ const key=snap.key;  
+ let imgHtml=p.img?`<img src="${p.img}">`:'';  
+  
+ const html=`  
+ <div class="announcement ${p.pinned?'pin':''}" id="post-${key}">  
+  ${imgHtml}  
+  <div class="announcement-content">  
+   <h3>${p.title}</h3>  
+   <p>${p.text}</p>  
+   <div class="meta">🕒 ${p.date} | ✍️ ${p.publisher||'إدارة الثانوية'}</div>  
+  
+   <div class="reactions">  
+     <button class="like-btn" onclick="likePost('${key}',this)">❤️ ${(p.likes?Object.keys(p.likes).length:0)}</button>  
+  
+     <div class="comment-box">  
+       <input type="text" placeholder="أضف تعليق..." id="c-${key}">  
+       <button onclick="addComment('${key}')">إرسال</button>  
+       <div id="comments-${key}"></div>  
+     </div>  
+  
+     <div class="admin-tools">  
+       <button onclick="adminAction('pin','${key}')">📌</button>  
+       <button onclick="adminAction('delete','${key}')">🗑️</button>  
+     </div>  
+   </div>  
+  
+  </div>  
+ </div>  
+ `;  
+ document.getElementById('feed').insertAdjacentHTML('afterbegin',html);  
+ loadComments(key);  
+});  
+  
+/* إعجاب مرة واحدة */  
+function likePost(postId,btn){  
+ const user=auth.currentUser;  
+ if(!user){showToast("سجل الدخول للإعجاب");return;}  
+ const ref=db.ref("posts/"+postId+"/likes/"+user.uid);  
+ ref.once("value",s=>{  
+  if(s.exists()){showToast("أعجبت مسبقاً");}  
+  else{  
+   ref.set(true);  
+   btn.classList.add("liked");  
+   btn.innerText="❤️ "+(parseInt(btn.innerText.split(" ")[1])+1);  
+  }  
+ });  
+}  
+  
+/* إضافة تعليق */  
+function addComment(postId){  
+ const user=auth.currentUser;  
+ if(!user){showToast("سجل الدخول للتعليق");return;}  
+ const input=document.getElementById("c-"+postId);  
+ const text=input.value.trim();  
+ if(!text)return;  
+  
+ const ref=db.ref("posts/"+postId+"/comments");  
+ ref.once("value",snap=>{  
+  if(snap.numChildren()>=10){showToast("وصل الحد الأقصى");return;}  
+  ref.push({  
+   name:user.displayName,  
+   text:text,  
+   date:new Date().toLocaleString('ar-EG')  
+  });  
+  input.value="";  
+  loadComments(postId);  
+ });  
+}  
+  
+/* تحميل التعليقات */  
+function loadComments(postId){  
+ const box=document.getElementById("comments-"+postId);  
+ if(!box)return;  
+ box.innerHTML="";  
+ db.ref("posts/"+postId+"/comments").once("value",snap=>{  
+  snap.forEach(c=>{  
+   const v=c.val();  
+   box.innerHTML+=`  
+   <div class="comment">  
+     ${v.text}<br>  
+     <small>${v.name} - ${v.date}</small>  
+     <button onclick="adminDeleteComment('${postId}','${c.key}')">🗑️</button>  
+   </div>`;  
+  });  
+ });  
+}  
+  
+/* أدوات المشرف */  
+function adminAction(type,postId){  
+ const pass=prompt("أدخل كلمة السر");  
+ if(pass!==ADMIN_PASSWORD){showToast("كلمة سر خاطئة");return;}  
+  
+ if(type==="delete"){  
+  db.ref("posts/"+postId).remove();  
+  document.getElementById("post-"+postId)?.remove();  
+ }  
+  
+ if(type==="pin"){  
+  db.ref("posts/"+postId+"/pinned").set(true);  
+  showToast("تم التثبيت");  
+ }  
+}  
+  
+function adminDeleteComment(postId,cid){  
+ const pass=prompt("كلمة السر");  
+ if(pass!==ADMIN_PASSWORD){showToast("خطأ");return;}  
+ db.ref("posts/"+postId+"/comments/"+cid).remove();  
+ loadComments(postId);  
+}  
+</script>
+<style>
+*{box-sizing:border-box}
+img{max-width:100%;height:auto}
+html,body{overflow-x:hidden}
+
+/* الهواتف */
+@media (max-width:576px){
+ header h1{font-size:22px}
+ header p{font-size:14px}
+ nav{flex-wrap:wrap;gap:5px}
+ nav button{flex:1 1 45%;font-size:14px;padding:8px}
+ .container{padding:0 10px}
+ .card{padding:20px 15px;border-radius:15px}
+ .welcome-banner h2{font-size:20px}
+ .announcement-content h3{font-size:16px}
+ .announcement-content p{font-size:14px}
+ input,textarea{font-size:14px}
+ .btn-add{font-size:15px;padding:12px}
+ .dev-img-container{width:120px;height:120px}
+ .dev-name{font-size:18px}
+ .dev-bio{font-size:14px}
+ .social-apps{gap:15px}
+ .like-btn{font-size:13px;padding:5px 10px}
+ .comment{font-size:12px}
+ .toast{width:90%;font-size:14px}
+}
+
+/* التابلت */
+@media (max-width:768px){
+ nav button{font-size:15px;padding:10px 15px}
+ .container{max-width:100%}
+ .announcement img{max-height:250px}
+ .comment-box input{width:100%;margin-bottom:5px}
+ .comment-box button{width:100%}
+}
+
+/* الشاشات الكبيرة */
+@media (min-width:1200px){
+ .container{max-width:1100px}
+ .card{padding:35px}
+}
+  </style>
